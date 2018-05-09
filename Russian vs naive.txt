@@ -1,0 +1,53 @@
+def naive(a, b)
+  x=a, y=b
+  z=0
+  while x > 0:
+    z = z + y
+    x = x - 1
+  return z
+
+Naive reikniritið skilar frá sér "a * b". Þegar aðferðin byrjar verður x = a og y = b, svo 
+er z sem verður 0. Eftir það keyrir while loop sem skoðar hvort að x er stærra en 0. Ef að 
+x er stærra en 0 keyrir það while loopið, Z = z + y og x = x-1, þar til að x er 0.
+dæmi með tölum:
+
+def naive(5, 3)
+  x = 5, y = 3
+  z = 0
+  while x > 0: (á meðan x er meira en 0, sem veldur því að loopið keyrir x5)
+    z = z + y  (z + y verður = 3)
+    x = x - 1  (x - 1 = 4)
+  return z
+
+
+---------------------------------
+
+def russian(a, b)
+  x = a, y = b
+  z = 0
+  while x > 0:
+    if x % 2 == 1: z = z + y
+    y = y << 1
+    x = x >> 1
+  return z
+
+Þetta er öðruvísi aðfer til að reikna "a * b", en hún virkar betur. Aðferðin byrjar eins og 
+naive aðferðin x = a, y = b, z = 0. Svo fer það í while loop á meðan x er stærra en 0. 
+If setningin spyr hvort að x sé oddatala. Ef að x er oddatala þá verður z = z + y. Svo
+er tekið binary framsetninguna á y og fært einn til vinstri (sem tvöfaldar töluna). Svo er 
+tekið binary framsetninguna á x og fært einn til hægri.
+dæmi:
+segjum að x = 5 og y = 3
+af því að 5 er oddatala þá verður z = z + 3 => 3
+5 => 101 sem verður => 010 sem er jafnt og 2
+3 => 011 sem verður => 110 sem er jafnt og 6
+
+2 => 010 sem verður => 001 sem er jafnt og 1
+6 => 110 sem verður => 1100 sem er jafnt og 12
+
+því að 1 er oddatala verður z = z + 12 eða 3 + 12 = 15
+5 * 3 = 15
+
+Í staðinn fyrir að fara í 5 skipti í gegnum while loopið eins og 
+naive þá fer russian bara tvisvar í gegnum loopið, sem tekur stittri tíma og 
+gerir því russian betri aðfrerð.
